@@ -8,7 +8,7 @@ package tree
 计算从根节点到叶节点生成的 所有数字之和 。
 
 叶节点 是指没有子节点的节点。
- */
+*/
 func sumNumbers(root *TreeNode) (res int) {
 	nodeQueue := []*TreeNode{root}
 	tempQueue := []int{0}
@@ -34,11 +34,11 @@ func sumNumbers(root *TreeNode) (res int) {
 	return
 }
 
-func sumNumbers1(root *TreeNode) (res int)  {
+func sumNumbers1(root *TreeNode) (res int) {
 	if root == nil {
 		return
 	}
-	var dfs func(root *TreeNode,temp int)
+	var dfs func(root *TreeNode, temp int)
 	dfs = func(root *TreeNode, temp int) {
 		if root == nil {
 			return
@@ -47,10 +47,10 @@ func sumNumbers1(root *TreeNode) (res int)  {
 			res += temp
 			return
 		}
-		next := temp * 10 + root.Val
+		next := temp*10 + root.Val
 		dfs(root.Left, next)
 		dfs(root.Right, next)
 	}
-	dfs(root,0)
+	dfs(root, 0)
 	return
 }

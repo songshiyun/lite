@@ -31,20 +31,19 @@ func isValidBST(root *TreeNode) bool {
 	return true
 }
 
-
 func isValidBST1(root *TreeNode) bool {
 	if root == nil || root.Left == nil && root.Right == nil {
 		return true
 	}
-	return dfs(root, math.MinInt64,math.MaxInt64)
+	return dfs(root, math.MinInt64, math.MaxInt64)
 }
 
-func dfs(root *TreeNode, min,max int) bool {
+func dfs(root *TreeNode, min, max int) bool {
 	if root == nil {
 		return true
 	}
 	if root.Val <= min || root.Val >= max {
 		return false
 	}
-	return dfs(root.Left,min,root.Val) && dfs(root.Right,root.Val,max)
+	return dfs(root.Left, min, root.Val) && dfs(root.Right, root.Val, max)
 }

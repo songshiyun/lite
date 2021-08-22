@@ -2,7 +2,6 @@ package design
 
 import "container/list"
 
-
 //lru
 //双向链表+map
 //map中保存的是双向链表中的element

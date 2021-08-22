@@ -1,4 +1,5 @@
 package tree
+
 //https://www.cnblogs.com/anniekim/archive/2013/06/15/morristraversal.html
 //mirros遍历： O(n)时间复杂的，O(1)空间复杂度
 func inorderMorrisTraversal(root *TreeNode) []int {

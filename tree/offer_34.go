@@ -13,8 +13,8 @@ func pathSum(root *TreeNode, target int) (res [][]int) {
 		temp = append(temp, cur.Val)
 		if cur.Left == nil && cur.Right == nil {
 			if cur.Val == remain {
-				t := make([]int,len(temp)) //tmp指针会被外层修改，这里需要拷贝
-				copy(t,temp)
+				t := make([]int, len(temp)) //tmp指针会被外层修改，这里需要拷贝
+				copy(t, temp)
 				res = append(res, t)
 			}
 			return

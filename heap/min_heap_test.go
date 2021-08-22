@@ -15,10 +15,10 @@ func TestNewIntHeap(t *testing.T) {
 	heap.Push(4)
 	heap.Push(1)
 	heap.Push(3)
-	fmt.Println(fmt.Sprintf("%+v",heap))
+	fmt.Println(fmt.Sprintf("%+v", heap))
 	for !heap.IsEmpty() {
 		log.Println()
 		log.Println(heap.Poll())
-		fmt.Println(fmt.Sprintf("%+v",heap))
+		fmt.Println(fmt.Sprintf("%+v", heap))
 	}
 }

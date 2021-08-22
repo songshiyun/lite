@@ -4,6 +4,7 @@ const (
 	White = iota
 	Gray
 )
+
 type colorNode struct {
 	Node  *TreeNode
 	Color int

@@ -8,7 +8,7 @@ candidates 中的数字可以无限制重复被选取。
 说明：
 
 所有数字（包括 target）都是正整数。
-解集不能包含重复的组合。 
+解集不能包含重复的组合。
 示例 1：
 
 输入：candidates = [2,3,6,7], target = 7,
@@ -26,10 +26,10 @@ candidates 中的数字可以无限制重复被选取。
 	[2,3,3],
 	[3,5]
 ]
- */
+*/
 func combinationSum(candidates []int, target int) (ans [][]int) {
-	var dfs func(comb []int,start, sum int)
-	dfs = func(comb []int,start,sum int) {
+	var dfs func(comb []int, start, sum int)
+	dfs = func(comb []int, start, sum int) {
 		if sum >= target { //剪枝条件
 			if sum == target {
 				ans = append(ans, append([]int(nil), comb...))
@@ -43,11 +43,11 @@ func combinationSum(candidates []int, target int) (ans [][]int) {
 		for i := start; i < len(candidates); i++ {
 			comb = append(comb, candidates[i])
 			sum += candidates[i]
-			dfs(comb,i, sum) //由于可以重复选择，这里是i,不是i+1
+			dfs(comb, i, sum) //由于可以重复选择，这里是i,不是i+1
 			comb = comb[:len(comb)-1]
 			sum -= candidates[i]
 		}
 	}
-	dfs([]int{}, 0,0)
+	dfs([]int{}, 0, 0)
 	return
 }

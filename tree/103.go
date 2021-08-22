@@ -2,7 +2,7 @@ package tree
 
 /**
 z字形遍历
- */
+*/
 func zigzagLevelOrder(root *TreeNode) (res [][]int) {
 	if root == nil {
 		return
