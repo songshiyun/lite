@@ -15,27 +15,19 @@ func gridGame(grid [][]int) int64 {
 		}
 	}
 	var res int
-	var index int
 	l := len(prefix[0])
 	// j是转弯的位置
 	for j := 0; j < len(prefix[0]); j++ {
-		var tmp int
-		if j ==0 {
-			tmp = prefix[0][j] + prefix[1][l-1]
+		if j == 0 {
+			res = max(res,prefix[0][l-1] - prefix[0][0])
 		}else {
-			tmp = prefix[0][j] + prefix[1][l-1] - prefix[1][j-1]
+			right := prefix[0][l-1] - prefix[0][j]
+			left := prefix[1][j-1]
+			res = min2(res,max2(right,left))
 		}
-		if tmp >= res {
-			res = tmp
-			index = j
-		}
+
 	}
-	if index !=  0 {
-		right := prefix[0][l-1] - prefix[0][index]
-		left := prefix[1][index-1]
-		return int64(max2(right,left))
-	}
-	return int64(prefix[0][l-2] - prefix[0][0])
+	return int64(res)
 }
 
 func max2(i,j int) int {
@@ -43,4 +35,26 @@ func max2(i,j int) int {
 		return i
 	}
 	return j
+}
+func min2(i,j int) int {
+	if i > j {
+		return j
+	}
+	return i
+}
+
+func gridGame1(grid [][]int) int64 {
+	var prefix1 int
+	for _,item := range grid[0] {
+		prefix1 += item
+	}
+	var res = 1 << 32 -1
+	var prefix2 int
+	for i,v := range grid[0] {
+		prefix1 -= v
+		res = min2(res,max2(prefix1,prefix2))
+		prefix2 += grid[1][i]
+
+	}
+	return int64(res)
 }
